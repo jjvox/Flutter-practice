@@ -49,10 +49,31 @@ class _AppState extends State<App> {
   }
 }
 
-class MyLargeTitle extends StatelessWidget {
+class MyLargeTitle extends StatefulWidget {
   const MyLargeTitle({
     super.key,
   });
+
+  @override
+  State<MyLargeTitle> createState() => _MyLargeTitleState();
+}
+
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  @override
+  void initState() {
+    //initState는 항상 build 보다 먼저 호출 되어야 한다.
+    // 여기서 초기화를 시켜준다.
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // widget이 사라질때 동작한다.
+    super.dispose();
+  }
+
+  //initState -> build -> dispose 순으로 동작. dispose는 widget이 사라질때 동작. react의 useEffect와 비슷 한거 같다.
+  //StatefulWidget의 lifeCycle이다.
 
   @override
   Widget build(BuildContext context) {
